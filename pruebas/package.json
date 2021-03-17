@@ -1,0 +1,29 @@
+{
+  "name": "Vue-first",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jheavi/Vue-first.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jheavi/Vue-first/issues"
+  },
+  "homepage": "https://github.com/Jheavi/Vue-first#readme",
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-vue": "^7.7.0"
+  },
+  "dependencies": {
+    "vue": "^2.6.12"
+  }
+}
