@@ -1,8 +1,8 @@
-interface Post {
+export interface Post {
   name: string
   title: string
   id: number
-
+  userId: number
 }
 
 interface State {
