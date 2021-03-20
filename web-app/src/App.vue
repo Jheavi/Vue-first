@@ -36,7 +36,27 @@ export default {
   color: #2c3e50;
 }
 
+textarea {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
 .general-container {
   min-height: 90vh;
+}
+
+button {
+  margin: 10px;
+  min-width: 100px;
+  min-height: 30px;
+  border: none;
+  padding: 10px;
+  font-weight: 600;
+  border-radius: 5px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+
+  &:focus {
+    outline: 1px solid black;
+  }
 }
 </style>
