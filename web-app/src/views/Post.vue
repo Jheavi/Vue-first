@@ -100,7 +100,7 @@ export default {
     BeatLoader
   },
   props: {
-    id: { type: String }
+    id: { type: String, default: '0' }
   },
   setup (props) {
     const store = useStore()
