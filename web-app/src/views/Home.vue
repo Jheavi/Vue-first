@@ -18,6 +18,12 @@
           </button>
         </router-link>
       </div>
+      <input
+        v-model="searchQuery"
+        class="search-bar"
+        type="text"
+        placeholder="Search by title"
+      >
       <ul>
         <li :key="0">
           <router-link
@@ -46,22 +52,34 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { mapState, mapMutations, mapActions } from 'vuex'
+import { computed, defineComponent, ref } from 'vue'
+import { useStore } from 'vuex'
+import { Post } from '../interfaces/store'
 
 export default defineComponent({
   name: 'Home',
 
-  computed: {
-    ...mapState(['posts'])
-  },
+  setup () {
+    const store = useStore()
+    const searchQuery = ref('')
+    const posts = computed(() => (
+      store.state.posts.filter((post: Post) => (
+        post.title.includes(searchQuery.value)
+      ))
+    ))
 
-  methods: {
-    ...mapMutations(['setPosts']),
-    ...mapActions(['getAllPosts']),
+    const slicePosts = () => store.commit('setPosts', posts.value.slice(0, 20))
 
-    slicePosts () {
-      this.setPosts(this.posts.slice(0, 20))
+    const setPosts = () => store.commit('setPosts')
+
+    const getAllPosts = () => store.dispatch('getAllPosts')
+
+    return {
+      posts,
+      setPosts,
+      getAllPosts,
+      slicePosts,
+      searchQuery
     }
   }
 })
@@ -72,6 +90,14 @@ li {
   list-style-type: none;
   margin: 5px 0;
   text-align: left;
+}
+
+.search-bar {
+  margin: 20px 0 5px;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .buttons {
@@ -86,6 +112,7 @@ li {
 
 .link {
   text-decoration: none;
+  color: #000000;
 }
 
 .off-link {
