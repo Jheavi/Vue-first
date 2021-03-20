@@ -2,13 +2,32 @@
   <main>
     <aside class="sidebar" />
     <div class="content">
-      <button @click="slicePosts">
-        Update
-      </button>
-      <button @click="getAllPosts">
-        Reload
-      </button>
+      <div class="buttons">
+        <button @click="slicePosts">
+          Slice list
+        </button>
+        <button @click="getAllPosts">
+          Reload list
+        </button>
+        <router-link
+          :to="{name: 'Create'}"
+          class="off-link"
+        >
+          <button>
+            Create post
+          </button>
+        </router-link>
+      </div>
       <ul>
+        <li :key="0">
+          <router-link
+            active-class="is-active"
+            class="link"
+            :to="{name: 'Post', params: { id: 0 }}"
+          >
+            Post numero 0
+          </router-link>
+        </li>
         <li
           v-for="post in posts"
           :key="post.id"
@@ -51,5 +70,30 @@ export default defineComponent({
 <style lang="scss" scoped>
 li {
   list-style-type: none;
+  margin: 5px 0;
+  text-align: left;
+}
+
+.buttons {
+  display: flex;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.off-link {
+  text-decoration: none;
+  color: #000000;
+
+  &:visited {
+    color: #000000;
+  }
 }
 </style>
