@@ -21,6 +21,7 @@ export async function updatePost (context: any, post: Post) {
     { postToUpdate: post }
   )
   context.commit('setPost', data)
+  context.commit('updatePostinPosts', data)
 }
 
 export async function deletePost (context: any, postId: number) {
@@ -32,14 +33,12 @@ export async function deletePost (context: any, postId: number) {
 }
 
 export async function createPost (context: any, post: Post) {
-  console.log('creando post', post)
-
   const { data } = await axios.post(context.state.endpoint, { postToCreate: post })
 
-  // if (data) {
-  //   context.commit('createPost', data)
-  //   context.commit('setPost', data)
-  // } else {
-  //   context.commit('setNoPost')
-  // }
+  if (data) {
+    context.commit('createPost', data)
+    context.commit('setPost', data)
+  } else {
+    context.commit('setNoPost')
+  }
 }

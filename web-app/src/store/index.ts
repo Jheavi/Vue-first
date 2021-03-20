@@ -25,6 +25,10 @@ const mutations = {
     state.post = {}
     state.postLoading = true
   },
+  updatePostinPosts (state:any, updatedPost: Post) {
+    const index = state.posts.findIndex((post:Post) => post.id === updatedPost.id)
+    state.posts.splice(index, 1, updatedPost)
+  },
   deletePost (state:any, postId: number) {
     state.posts = state.posts.filter((post: Post) => post.id !== postId)
   },
