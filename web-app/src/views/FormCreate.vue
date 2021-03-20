@@ -50,7 +50,6 @@ export default defineComponent({
     const store = useStore()
     const title = ref('')
     const body = ref('')
-    const posts = ref(store.state.posts)
 
     const createPost = () => {
       if (title.value.length > 2 && body.value.length > 10) {
